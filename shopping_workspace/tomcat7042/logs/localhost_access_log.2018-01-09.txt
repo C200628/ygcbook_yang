@@ -1,0 +1,17 @@
+127.0.0.1 - - [09/Jan/2018:23:55:27 +0800] "GET / HTTP/1.1" 200 11444
+127.0.0.1 - - [09/Jan/2018:23:55:51 +0800] "GET /fusionMain/showLogin HTTP/1.1" 404 991
+127.0.0.1 - - [09/Jan/2018:23:56:02 +0800] "GET /financeMain/showLogin HTTP/1.1" 404 993
+127.0.0.1 - - [09/Jan/2018:23:56:05 +0800] "GET / HTTP/1.1" 200 11444
+127.0.0.1 - - [09/Jan/2018:23:56:08 +0800] "GET /manager/html HTTP/1.1" 401 2550
+127.0.0.1 - admin [09/Jan/2018:23:56:09 +0800] "GET /manager/html HTTP/1.1" 200 18905
+127.0.0.1 - admin [09/Jan/2018:23:57:51 +0800] "GET /manager/html HTTP/1.1" 200 18905
+127.0.0.1 - - [09/Jan/2018:23:57:52 +0800] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [09/Jan/2018:23:57:59 +0800] "GET / HTTP/1.1" 200 11444
+127.0.0.1 - admin [09/Jan/2018:23:58:00 +0800] "GET /manager/html HTTP/1.1" 200 18905
+127.0.0.1 - - [09/Jan/2018:23:58:17 +0800] "GET / HTTP/1.1" 200 11444
+127.0.0.1 - - [09/Jan/2018:23:58:26 +0800] "GET /financeMain/showLogin HTTP/1.1" 404 993
+127.0.0.1 - - [09/Jan/2018:23:58:42 +0800] "GET / HTTP/1.1" 200 11444
+127.0.0.1 - admin [09/Jan/2018:23:58:43 +0800] "GET /manager/html HTTP/1.1" 200 19873
+127.0.0.1 - admin [09/Jan/2018:23:58:53 +0800] "POST /manager/html/start?path=/financeMain&org.apache.catalina.filters.CSRF_NONCE=2D5639347F946EF8FE0513B6FBC24375 HTTP/1.1" 200 19941
+127.0.0.1 - admin [09/Jan/2018:23:58:56 +0800] "POST /manager/html/start?path=/finance&org.apache.catalina.filters.CSRF_NONCE=3C913670C145C87BA5186AC39109727C HTTP/1.1" 200 19937
+127.0.0.1 - admin [09/Jan/2018:23:59:10 +0800] "POST /manager/html/start?path=/financeMain&org.apache.catalina.filters.CSRF_NONCE=70A5509A12BE69453482D270956E386B HTTP/1.1" 200 19941

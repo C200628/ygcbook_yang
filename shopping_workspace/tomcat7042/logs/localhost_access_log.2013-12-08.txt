@@ -1,0 +1,7 @@
+127.0.0.1 - - [08/Dec/2013:13:17:39 +0900] "POST /fusion/welcomeMaster HTTP/1.1" 200 1864
+127.0.0.1 - - [08/Dec/2013:13:17:39 +0900] "GET /fusion/js/dialog.js HTTP/1.1" 304 -
+127.0.0.1 - - [08/Dec/2013:13:17:39 +0900] "GET /fusion/js/constants.js HTTP/1.1" 304 -
+127.0.0.1 - - [08/Dec/2013:13:17:41 +0900] "GET /fusion/css/fusion.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Dec/2013:13:17:41 +0900] "GET /fusion/js/message.js HTTP/1.1" 304 -
+127.0.0.1 - - [08/Dec/2013:13:17:45 +0900] "POST /fusion/welcome HTTP/1.1" 200 538
+127.0.0.1 - - [08/Dec/2013:13:17:45 +0900] "GET /fusion/js/calendar.js HTTP/1.1" 304 -

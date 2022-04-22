@@ -1,0 +1,7 @@
+127.0.0.1 - - [21/Oct/2013:09:05:03 +0900] "GET /fusion/ HTTP/1.1" 200 1343
+127.0.0.1 - - [21/Oct/2013:09:05:03 +0900] "GET /fusion/js/login.js HTTP/1.1" 304 -
+127.0.0.1 - - [21/Oct/2013:09:05:03 +0900] "GET /fusion/js/page.js HTTP/1.1" 304 -
+127.0.0.1 - - [21/Oct/2013:09:05:03 +0900] "GET /fusion/css/fusion.css HTTP/1.1" 304 -
+127.0.0.1 - - [21/Oct/2013:09:05:09 +0900] "POST /fusion/welcome HTTP/1.1" 200 6831
+127.0.0.1 - - [21/Oct/2013:09:05:09 +0900] "GET /fusion/js/stock/menu.js HTTP/1.1" 304 -
+127.0.0.1 - - [21/Oct/2013:09:05:09 +0900] "GET /fusion/img/common/monthly_button_a.gif HTTP/1.1" 304 -

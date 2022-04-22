@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--    外部ファイル -->
+	<include file="StockStruts.xml"/> 
+	<include file="BondStruts.xml"/> 
+	<include file="MasterStruts.xml"/> 
+
+    <!-- 出力情報 -->
+    <package name="fusion" namespace="/" extends="struts-default">
+        <interceptors>
+            <!-- interceptorの定義 -->
+            <interceptor name="login" class="jp.co.profit_cube.fusion.framework.interceptors.LoginInterceptor" />
+        
+            <!-- interceptorをグルーピング -->
+            <interceptor-stack name="myDefaultStack">
+                <!-- 呼び出したい順にinterceptorを記述する -->
+                <interceptor-ref name="login" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+        <!-- 
+        <interceptors>
+            <interceptor-stack name="appDefaultStack">
+                <interceptor-ref name="defaultStack">
+                    <param name="exception.logEnabled">true</param>
+                    <param name="exception.logLevel">ERROR</param>
+                </interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        -->
+                <!-- デフォルトinterceptorを再定義 -->
+        <default-interceptor-ref name="myDefaultStack"/>
+        
+        <global-results>
+            <result name="login_page">/WEB-INF/content/index.jsp</result>
+            <result name="login_error">/WEB-INF/content/error.jsp</result>
+            <result name="login-success" type="redirectAction">welcome</result>
+        </global-results>
+        
+        <!-- http://localhost:8080/Fusion  -->
+        <action name="welcome" class="jp.co.profit_cube.fusion.login.controllers.WelcomeAction" method="display">
+            <result name="success">/WEB-INF/content/pages/stock_menu.jsp</result>
+        </action>
+        
+    </package>
+</struts>

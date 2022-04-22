@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="stock" namespace="/" extends="struts-default">
+        <!-- http://localhost:8080/Fusion/usrOp_read  -->
+        <action name="tostock_menu" class="jp.co.profit_cube.fusion.stock.controllers.StockMenuAction" method="display">
+            <result name="success" >/WEB-INF/content/pages/stock_menu.jsp</result>
+            <result name="welcomePage" type="redirectAction">welcome</result>
+            <result name="brandregisternewPage" type="redirectAction">stock_brand_review_search</result>
+            <result name="brandupdatedeletePage" type="redirectAction">stock_brand_review_search</result>
+            <result name="brandreviewsearchPage" type="redirectAction">stockBrandReviewSearch</result>
+            <result name="purchaseregisternewPage" type="redirectAction">stock_brand_review_search</result>
+            <result name="purchaseupdatedeletePage" type="redirectAction">stock_brand_review_search</result>
+            <result name="saleregisternewPage" type="redirectAction">stock_brand_review_search</result>
+            <result name="saleupdatedeletePage" type="redirectAction">stock_brand_review_search</result>
+            <result name="equityvolumeregisternewPage" type="redirectAction">stock_brand_review_search</result>
+            <result name="equityvolumeupdatedeletePage" type="redirectAction">stock_brand_review_search</result>
+            <result name="dividendinputregisternewPage" type="redirectAction">stock_brand_review_search</result>
+            <result name="dividendinputupdatedeletePage" type="redirectAction">stock_brand_review_search</result>
+            <result name="transferregisternewPage" type="redirectAction">stock_brand_review_search</result>
+            <result name="transferupdatedeletePage" type="redirectAction">stock_brand_review_search</result>
+            <result name="transfersectionPage" type="redirectAction">stockBrandReviewSearch</result>
+        </action>
+        
+        <action name="stockBrandReviewSearch" class="jp.co.profit_cube.fusion.stock.controllers.StockBrandReviewSearchAction" method="execute">
+            <result name="success">/WEB-INF/content/pages/stock/stock_brand_review_search.jsp</result>
+            <result name="stockmenuPage" type="redirectAction">tostock_menu</result>
+            <!-- 
+            <result name="stockbrandreviewPage" type="chain">stockBrandReview</result>
+            -->
+            <result name="stockbrandreviewPage" type="dispatcher">stockBrandReview</result>
+
+        </action>
+        
+        <action name="stockBrandReview" class="jp.co.profit_cube.fusion.stock.controllers.StockBrandReviewAction" method="execute">
+            <result name="success">/WEB-INF/content/pages/stock/stock_brand_review.jsp</result>
+            <result name="stockmenuPage" type="redirectAction">tostock_menu</result>
+            <result name="stockbrandreviewsearchPage" type="redirectAction">stockBrandReviewSearch</result>
+        </action>
+        
+        <action name="stockBrandReviewAdd" class="jp.co.profit_cube.fusion.stock.controllers.StockBrandReviewAction" method="add">
+            <result name="success">/WEB-INF/content/pages/stock/stock_brand_review.jsp</result>
+        </action>
+        <action name="stockBrandReviewUpdate" class="jp.co.profit_cube.fusion.stock.controllers.StockBrandReviewAction" method="update">
+            <result name="success">/WEB-INF/content/pages/stock/stock_brand_review.jsp</result>
+        </action>
+        <action name="stockBrandReviewDel" class="jp.co.profit_cube.fusion.stock.controllers.StockBrandReviewAction" method="del">
+            <result name="success">/WEB-INF/content/pages/stock/stock_brand_review.jsp</result>
+        </action>
+        <action name="stockBrandReviewBack" class="jp.co.profit_cube.fusion.stock.controllers.StockBrandReviewAction" method="back">
+            <result name="success">/WEB-INF/content/pages/stock/stock_brand_review_search.jsp</result>
+        </action>
+        <!-- 
+        <action name="usrOp_*" class="usrOpAction" method="{1}">
+            <result>/WEB-INF/jsp/layout/page.jsp?mainPage=..%2Fpages%2FusrOp.jsp</result>
+        </action>
+        
+        <action name="op_*" class="opAction" method="{1}">  
+            <result name="opList" type="json"></result>  
+        </action> 
+         -->
+        <!-- 購入系Action  -->
+        <!-- 
+        <action name="order_*" class="order" method="{1}">
+            <result>/WEB-INF/jsp/layout/page.jsp?mainPage=..%2Fpages%2ForderKabu.jsp</result>
+        </action>
+         -->
+        <!-- 
+        <default-interceptor-ref name="appDefaultStack" />
+
+        <global-results>
+            <result name="error">/content/pages/stock/error.jsp</result>
+        </global-results>
+
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception"
+                result="error" />
+        </global-exception-mappings>
+
+        <action name="rbrandSelect"
+            class="rBrandSelectAction" method="execute">
+            <result name="success">/content/pages/aad.jsp</result>
+        </action>
+         -->
+        <!-- 
+        <action name="user_*" class="userAction" method="{1}">
+            <result name="success" type="redirectAction">user_queryAllUser.action</result>
+        </action>
+         -->
+    </package>
+</struts>

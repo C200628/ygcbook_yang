@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
+default-autowire="byName"
+>
+	<!-- Spring AOPアドバイザーの設定 -->
+	<!--
+		seren.lumi2.serviceパッケージ以下にあるServiceクラスに対してポイントカットしています。
+		設定してあるインターセプタは、serviceBeforeAdvice(メソッド稼働前)、serviceAfterAdvice(メソッド稼働後)、serviceThrowableAdvice(例外スロー時)の３つ。
+	 -->
+	 <!-- 
+	<aop:config>
+		<aop:pointcut id="serviceBeans" expression="bean(*Service)" />
+		<aop:advisor pointcut-ref="serviceBeans" advice-ref="serviceBeforeAdvice" />
+		<aop:advisor pointcut-ref="serviceBeans" advice-ref="serviceAfterAdvice" />
+		<aop:advisor pointcut-ref="serviceBeans" advice-ref="serviceThrowableAdvice" />
+	</aop:config>
+ -->
+	<!-- Service実行前アドバイス設定。 -->
+	<!-- 
+	<bean id="serviceBeforeAdvice" class="jp.co.profit_cube.fusion.advisors.ServiceBeforeAdvisor" />
+	 -->
+	<!-- Service実行後アドバイス設定。 -->
+	<!-- 
+	<bean id="serviceAfterAdvice" class="jp.co.profit_cube.fusion.advisors.ServiceAfterAdvisor" />
+	 -->
+	<!-- Service実行例外アドバイス設定 -->
+	<!-- 
+	<bean id="serviceThrowableAdvice" class="jp.co.profit_cube.fusion.advisors.ServiceThrowableAdvisor" />
+	 -->
+</beans>
