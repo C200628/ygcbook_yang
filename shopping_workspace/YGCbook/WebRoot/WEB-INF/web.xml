@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="gbk"?>
 <web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns="http://JAVA.sun.com/xml/ns/javaee" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
@@ -586,6 +586,17 @@
     <servlet-name>ChangeServlet</servlet-name>
     <url-pattern>/ChangeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>UserRigsterServlet</servlet-name>
+    <servlet-class>co.jp.netwisdom.Servlet.UserRigsterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserRigsterServlet</servlet-name>
+    <url-pattern>/userRegister</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <!--<error-page>
   	<error-code>404</error-code>
   	<location>/error404.jsp</location>
