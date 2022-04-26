@@ -61,8 +61,6 @@ public class UserRigsterServlet extends HttpServlet {
 				}else{
 					System.out.println("爱好信息导入数据库失败！！请确认失败原因！！！");
 				}
-				
-				
-				request.getRequestDispatcher("/userReg.jsp").forward(request, response);
+				request.getRequestDispatcher("/ygcbook/userReg.jsp").forward(request, response);
 		}
 }

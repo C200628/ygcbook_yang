@@ -7,7 +7,8 @@
 
 <body>
 	<form action="userRegister" method="post" >
-			<br>
+		<br>
+		<div class="headImg" align="center">	
 		姓名:<input type="text" name="username" id="username">
 			<br>
 		密码:<input type="password" name="password"id="password">
@@ -17,9 +18,9 @@
 			<input type="radio" name="sex" id="sex2" value="1">女
 			<br>
 			<br>
-		爱好:<input type="checkbox" name="hobby" id="hobby1" value="1">足球
-			<input type="checkbox" name="hobby" id="hobby2" value="2">篮球
-			<input type="checkbox" name="hobby" id="hobby3" value="3">网球
+		爱好:<input type="checkbox" name="hobby" id="hobby1" value="0">足球
+			<input type="checkbox" name="hobby" id="hobby2" value="1">篮球
+			<input type="checkbox" name="hobby" id="hobby3" value="2">网球
 			<br>
 			<br>
 		专业:<select name="major" id="major">
@@ -34,6 +35,7 @@
 		
 			<input type="submit" value="注册用户">
 			<input type="button" value="重置">
+			</div>
 	</form>
 </body>
 </html>
