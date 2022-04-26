@@ -594,7 +594,14 @@
     <servlet-name>UserRigsterServlet</servlet-name>
     <url-pattern>/userRegister</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>UserSearchServlet</servlet-name>
+    <servlet-class>co.jp.netwisdom.Servlet.UserSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserSearchServlet</servlet-name>
+    <url-pattern>/userSearch</url-pattern>
+  </servlet-mapping>
   
   
   <!--<error-page>

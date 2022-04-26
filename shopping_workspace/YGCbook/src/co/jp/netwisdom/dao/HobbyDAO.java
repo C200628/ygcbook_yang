@@ -14,20 +14,20 @@ public class HobbyDAO {
 		String sql = "insert into hobby(username,hobby) " +
 					 "	values(?,?) ";
 	
-	try {
-		for(Object object : list) {
-			Hobby hobbyobject = (Hobby)object;
-			Object[] values = null;
-			values = new Object[] {
-					hobbyobject.getUsername(),
-					hobbyobject.getHobby()};
-			row = template.updata(sql, values);
+		try {
+			for(Object object : list) {
+				Hobby hobbyobject = (Hobby)object;
+				Object[] values = null;
+				values = new Object[] {
+						hobbyobject.getUsername(),
+						hobbyobject.getHobby()};
+				row = template.updata(sql, values);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-	}catch (SQLException e) {
-
-	}catch (ClassNotFoundException e) {
-	
-	}
-	return true;
+		return true;
 	}
 }
