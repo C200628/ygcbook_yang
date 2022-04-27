@@ -50,7 +50,4 @@ public class UserInfo {
 		super();
 		
 	}
-	
-	
-	
 }

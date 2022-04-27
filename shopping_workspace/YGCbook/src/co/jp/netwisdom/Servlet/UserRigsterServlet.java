@@ -24,43 +24,34 @@ public class UserRigsterServlet extends HttpServlet {
 				throws ServletException, IOException{
 				
 				String username = request.getParameter("username");
-				
 				String password = request.getParameter("password");
-				
 				String sex = request.getParameter("sex");
-			
 				String major = request.getParameter("major");
-				
 				String intro = request.getParameter("intro");
-				
-				String[] hobbyArrsy = request.getParameterValues("hobby");
+				String[] hobbyArray = request.getParameterValues("hobby");
 					
 				List hobbyList = new ArrayList();
 				
-				for(int i = 0; i<hobbyArrsy.length;i++) {
+				for(int i = 0; i < hobbyArray.length;i++) {
 					Hobby hobbyObject = new Hobby();
 					hobbyObject.setUsername(username);
-					hobbyObject.setHobby(hobbyArrsy[i]);
+					hobbyObject.setHobby(hobbyArray[i]);
 					hobbyList.add(hobbyObject);
 				}
 				
 				//用户信息导入
 				UserInfoDAO userinfodao = new UserInfoDAO();
-				
-				if (userinfodao.sava(new UserInfo(username, password, sex, major, intro))) {
-					System.out.println("用户信息成功导入数据库！！");
-				}else{
-					System.out.println("用户信息导入数据库失败！！请确认失败原因！！！");
-				}
-				
 				//爱好信息导入
 				HobbyDAO hobbydao = new HobbyDAO();
 				
-				if (hobbydao.sava(hobbyList)) {
-					System.out.println("爱好信息成功导入数据库！！");
+				if (userinfodao.sava(new UserInfo(username, password, sex, major, intro))
+					&& hobbydao.sava(hobbyList)){
+					System.out.println("用户信息 爱好信息导入数据库成功！！");
+					request.getRequestDispatcher("/userRegSuccess.jsp").forward(request, response);
+					
 				}else{
-					System.out.println("爱好信息导入数据库失败！！请确认失败原因！！！");
+					System.out.println("用户信息 爱好信息导入数据库失败！！");
+					response.sendRedirect("/YGCbook/UserRegFail.jsp");
 				}
-				request.getRequestDispatcher("/ygcbook/userReg.jsp").forward(request, response);
 		}
 }
