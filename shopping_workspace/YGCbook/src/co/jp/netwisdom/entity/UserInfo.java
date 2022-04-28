@@ -50,4 +50,16 @@ public class UserInfo {
 		super();
 		
 	}
+	public Object[] getObjArray() {
+		Object[] value = {
+			this.username,
+			this.password,
+			this.sex,
+			this.major,
+			this.intro
+		};
+		return value;
+	}
+
+	
 }

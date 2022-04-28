@@ -7,7 +7,7 @@
 	<meta http-equiv="refresh" content="5; url=userReg.jsp"> <!--5秒后跳转回用户注册界面-->
 	</head>
 	<body>
-			<div class="headImg" align="center">	
+			<div align="center">	
 			<h1>用户注册失败！请查找失败原因！！！</h1>
 			</div>
 	</body>

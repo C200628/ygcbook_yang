@@ -7,25 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import co.jp.netwisdom.dao.UserInfoDAO;
-import co.jp.netwisdom.entity.UserInfo;
 
 public class UserSearchServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException{
 		String username = request.getParameter("username");
+		String sex = request.getParameter("sex");
+		String major = request.getParameter("major");
 		
-		UserInfoDAO userInfoDAO = new UserInfoDAO();
-		UserInfo userInfo = userInfoDAO.findById(username);
-		System.out.println("读取成功");
-		System.out.println("检索信息如下：");
-		System.out.println("用户名：" + userInfo.getUsername());
-		System.out.println("密码：" + userInfo.getPassword());
-		System.out.println("性别：" + userInfo.getSex());
-		System.out.println("专业：" + userInfo.getMajor());
-		System.out.println("简介：" + userInfo.getIntro());
-		
-		
+		System.out.println(username);
+		System.out.println(sex);
+		System.out.println(major);
 		
 		
 	}

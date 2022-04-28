@@ -7,7 +7,7 @@
 	<meta http-equiv="refresh" content="5; url=userSearch.jsp"> <!--5秒后跳转检索界面-->
 	</head>
 		<body>
-			<div class="headImg" align="center">	
+			<div align="center">	
 			<h1>用户注册成功！！！</h1>
 			</div>
 		</body>
