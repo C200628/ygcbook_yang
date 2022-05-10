@@ -41,7 +41,7 @@ public class UserInfoHobbyDAO {
 		return list;
 	}
 	
-	public  List<UserInfoHobby> SearchUH(String username){
+	public  List<UserInfoHobby> SearchUH(String username ,String password,String hobby,String major, String intro){
 		String sql = "SELECT uf.username,password,sex,GROUP_CONCAT(hobby)hobby,major,intro "
 					 + "FROM userinfo uf "
 					 + "LEFT JOIN hobby hy "
