@@ -2,6 +2,7 @@ package co.jp.netwisdom.entity;
 
 public class UserInfoHobby {
 	private String username;
+	private String password;
 	private String sex;
 	private String major;
 	private String intro;
@@ -10,9 +11,10 @@ public class UserInfoHobby {
 	public UserInfoHobby() {
 		super();
 	}
-	public UserInfoHobby(String username,String sex,String hobby,String major,String intro) {
+	public UserInfoHobby(String username,String password,String sex,String hobby,String major,String intro) {
 		super();
 		this.username = username;
+		this.password = password;
 		this.sex = sex;
 		this.hobby=hobby;
 		this.major = major;
@@ -24,8 +26,13 @@ public class UserInfoHobby {
 	}
 	public String getUsername() {
 		return username;
+	}	
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
+	public String getPassword() {
+		return password;
+	}
 	public void setSex(String sex) {
 		this.sex = sex;
 	}

@@ -586,23 +586,38 @@
     <servlet-name>ChangeServlet</servlet-name>
     <url-pattern>/ChangeServlet</url-pattern>
   </servlet-mapping>
+  
+  
   <servlet>
     <servlet-name>UserRigsterServlet</servlet-name>
     <servlet-class>co.jp.netwisdom.Servlet.UserRigsterServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>UserRigsterServlet</servlet-name>
     <url-pattern>/userRegister</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>UserSearchServlet</servlet-name>
     <servlet-class>co.jp.netwisdom.Servlet.UserSearchServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>UserSearchServlet</servlet-name>
     <url-pattern>/userSearch</url-pattern>
   </servlet-mapping>
-  
+
+<servlet>
+	<servlet-name>UserUpdateInitServlet</servlet-name>
+	<servlet-class>co.jp.netwisdom.Servlet.UserUpdateInitServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>UserUpdateInitServlet</servlet-name>
+	<url-pattern>/userUpdateInit</url-pattern>
+</servlet-mapping>
+
   
   <!--<error-page>
   	<error-code>404</error-code>

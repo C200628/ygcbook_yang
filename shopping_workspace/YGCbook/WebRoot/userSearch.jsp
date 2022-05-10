@@ -1,4 +1,4 @@
-﻿
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.security.interfaces.RSAKey"%>
 <%@ page import="java.util.List"%>
 <%@ page import="co.jp.netwisdom.entity.UserInfoHobby" %>
@@ -32,8 +32,10 @@
 		<form action="userSearch" method="post">
 				<br>
 				<div align="center">
+			
 					姓名:
-						<input type="text" name="username" id="username">
+						<input type="text" name="username" id="username" >
+				
 						<br>
 						<br>
 					性别:
@@ -61,22 +63,24 @@
 		<table border="1" align="center">
 			<tr>
 				<th>姓名</th>
+				<th>密码</th>
 				<th>性别</th>
 				<th>爱好</th>
 				<th>专业</th>
 				<th>简介</th>
 			</tr>
-			<% if(datalist!=null) {%>
-				<% for( UserInfoHobby rs : datalist){%>
+			<% if(datalist!= null) {%>
+				<% for( UserInfoHobby uh : datalist){%>
 					<tr>
-						<td id="td1" bgcolor="#eee8aa"><%=rs.getUsername()%></td>
-						<td bgcolor="#ffdab9"><%=rs.getSex().replace("0","男").replace("1","女")%></td>
-						<td bgcolor="#66cdaa"><%=rs.getHobby().replace("0","足球").replace("1","篮球").replace("2","网球")%></td>
-						<td bgcolor="#dda0dd"><%=rs.getMajor().replace("0","软件工程").replace("1","英语").replace("2","数学")%></td>
-						<td bgcolor="#ff7f50"><%=rs.getIntro()%></td>
+						<td bgcolor="#eee8aa" ><a href="userUpdateInit?username=<%=uh.getUsername()%>"><%=uh.getUsername()%></a></td>
+						<td bgcolor="#ccc8aa" ><%=uh.getPassword()%></td>
+						<td bgcolor="#ffdab9" ><%=uh.getSex().replace("0","男").replace("1","女")%></td>
+						<td bgcolor="#88cdaa" ><%=uh.getHobby().replace("0","足球").replace("1","篮球").replace("2","网球")%></td>
+						<td bgcolor="#aaa0dd" ><%=uh.getMajor().replace("0","软件工程").replace("1","英语").replace("2","数学")%></td>
+						<td bgcolor="#ee7f50" ><%=uh.getIntro()%></td>
 					</tr>
 				<%}%>
-			<%}%>
+			<%}%> 
 		</table>
 	</body>
 </html>
