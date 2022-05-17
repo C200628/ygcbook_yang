@@ -1,8 +1,11 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.security.interfaces.RSAKey"%>
 <%@ page import="java.util.List"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.HashMap"%>
 <%@ page import="co.jp.netwisdom.entity.UserInfoHobby" %>
-<% List<UserInfoHobby> datalist = (List<UserInfoHobby>)request.getAttribute("data"); %>
+<% List<UserInfoHobby> datas = (List<UserInfoHobby>)request.getAttribute("data"); %>
+
 
 
 <html>
@@ -30,19 +33,19 @@
 	
 	<body>
 		<form action="userSearch" method="post">
-				<br>
+				<br/>
 				<div align="center">
 			
 					姓名:
 						<input type="text" name="username" id="username" >
-				
-						<br>
-						<br>
+			
+						<br/>
+						<br/>
 					性别:
 						<input type="radio" name="sex" id="sex1" value="0">男
 						<input type="radio" name="sex" id="sex2" value="1">女
-						<br>
-						<br>
+						<br/>
+						<br/>
 					专业:
 						<select name="major" id="major">
 						<option value="">-</option>
@@ -50,16 +53,16 @@
 						<option value="1">英语</option>
 						<option value="2">数学</option>
 						</select>
-						<br>
-						<br>
+						<br/>
+						<br/>
 						<input type="submit" value="查询">
 						<input type="reset" value="重置">  
 				</div>
 		</form>
 			
-				<br>
-				<div align="center">查询信息一览</div>
-				<hr>
+		<br/>
+		<div align="center">查询信息一览</div>
+		<hr>
 		<table border="1" align="center">
 			<tr>
 				<th>姓名</th>
@@ -69,8 +72,8 @@
 				<th>专业</th>
 				<th>简介</th>
 			</tr>
-			<% if(datalist!= null) {%>
-				<% for( UserInfoHobby uh : datalist){%>
+			<% if(datas!= null) {%>
+				<% for( UserInfoHobby uh : datas){%>
 					<tr>
 						<td bgcolor="#eee8aa" ><a href="userUpdateInit?username=<%=uh.getUsername()%>"><%=uh.getUsername()%></a></td>
 						<td bgcolor="#ccc8aa" ><%=uh.getPassword()%></td>
@@ -81,6 +84,7 @@
 					</tr>
 				<%}%>
 			<%}%> 
+			
 		</table>
 	</body>
 </html>

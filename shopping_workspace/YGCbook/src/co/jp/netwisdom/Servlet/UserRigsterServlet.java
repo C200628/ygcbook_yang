@@ -44,8 +44,7 @@ public class UserRigsterServlet extends HttpServlet {
 				//爱好信息导入
 				HobbyDAO hobbydao = new HobbyDAO();
 				
-				if (userinfodao.sava(new UserInfo(username, password, sex, major, intro))
-					&& hobbydao.sava(hobbyList)){
+				if (userinfodao.sava(new UserInfo(username, password, sex, major, intro)) && hobbydao.sava(hobbyList)){
 					System.out.println("用户信息 爱好信息导入数据库成功！！");
 					request.getRequestDispatcher("/userRegSuccess.jsp").forward(request, response);
 					

@@ -14,7 +14,7 @@ public class UserInfoDAO {
 			String sql = "insert into userInfo(username,password,sex,major,intro) " +
 					"	values(?,?,?,?,?) ";
 			
-			Object[] values =  userInfo.getObjArray();
+			Object[] values = userInfo.getObjArray();
 			
 			try {
 				row = template.updata(sql, values);
@@ -24,5 +24,21 @@ public class UserInfoDAO {
 				e.printStackTrace();
 			}
 			return row == 1;
+		}
+
+		public boolean upUserInfoFlag(String username) {
+			
+			String sql = "update userInfo set delFlg = '1' where username= ? ";
+			
+			Object[] values = new Object[] {username};
+			
+			try {
+				template.updata(sql, values);
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return true;
 		}
 }

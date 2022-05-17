@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.key.dbManager.JdbcTemplate;
+import co.jp.netwisdom.entity.UserInfo;
 import co.jp.netwisdom.entity.UserInfoHobby;
 import co.jp.netwisdom.mapping.UserInfoHobbyMapping;
 
 public class UserInfoHobbyDAO {
 	
 	private JdbcTemplate template = new JdbcTemplate();
-	
+
 	public  List<UserInfoHobby>  SearchUH(String username,String password,String sex,String major ){
 		String sql = "SELECT uf.username,password,sex,GROUP_CONCAT(hobby)hobby,major,intro "
 					 + "FROM userinfo uf "
@@ -30,6 +31,9 @@ public class UserInfoHobbyDAO {
 				if (!major.equals("")) {
 					sql += "AND major = '"+ major +"'";
 				}
+//				if() {
+				sql += " AND uf.delFlg ='0' AND hy.delFlg = '0'";
+//				}
 				sql += " GROUP BY uf.username";
 				
 				List<UserInfoHobby> list = new ArrayList<UserInfoHobby>();
@@ -40,14 +44,16 @@ public class UserInfoHobbyDAO {
 				}
 		return list;
 	}
-	
-	public  List<UserInfoHobby> SearchUH(String username ,String password,String hobby,String major, String intro){
-		String sql = "SELECT uf.username,password,sex,GROUP_CONCAT(hobby)hobby,major,intro "
+
+	public  List<UserInfoHobby> upUserIH(String username){
+		String sql = "SELECT uf.username,password,sex,hobby,major,intro "
 					 + "FROM userinfo uf "
 					 + "LEFT JOIN hobby hy "
-					 + "ON uf.username = hy.username WHERE uf.username = ";
+					 + "ON uf.username = hy.username WHERE ";
 				
-				sql += "'" + username + "'";
+				sql += " uf.username = '" + username + "'";
+				sql += " AND uf.delFlg ='0' AND hy.delFlg = '0'";
+				sql += " GROUP BY uf.username";
 				
 				List<UserInfoHobby> list = new ArrayList<UserInfoHobby>();
 				try {

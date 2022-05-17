@@ -60,6 +60,5 @@ public class UserInfo {
 		};
 		return value;
 	}
-
 	
 }

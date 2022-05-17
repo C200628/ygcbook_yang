@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="gbk"?>
+<?xml version="1.0" encoding="utf-8"?>
 <web-app version="2.5" 
 	xmlns="http://JAVA.sun.com/xml/ns/javaee" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -587,37 +587,53 @@
     <url-pattern>/ChangeServlet</url-pattern>
   </servlet-mapping>
   
-  
-  <servlet>
-    <servlet-name>UserRigsterServlet</servlet-name>
-    <servlet-class>co.jp.netwisdom.Servlet.UserRigsterServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>UserRigsterServlet</servlet-name>
-    <url-pattern>/userRegister</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>UserSearchServlet</servlet-name>
-    <servlet-class>co.jp.netwisdom.Servlet.UserSearchServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>UserSearchServlet</servlet-name>
-    <url-pattern>/userSearch</url-pattern>
-  </servlet-mapping>
+<!-- 用户注册画面 -->
+	<servlet>
+		<servlet-name>UserRigsterServlet</servlet-name>
+		<servlet-class>co.jp.netwisdom.Servlet.UserRigsterServlet</servlet-class>
+	</servlet>
+	  
+	<servlet-mapping>
+		<servlet-name>UserRigsterServlet</servlet-name>
+		<url-pattern>/userRegister</url-pattern>
+	</servlet-mapping>
+<!-- 用户注册画面 END-->
 
-<servlet>
-	<servlet-name>UserUpdateInitServlet</servlet-name>
-	<servlet-class>co.jp.netwisdom.Servlet.UserUpdateInitServlet</servlet-class>
-</servlet>
+<!-- 用户查询画面 -->  
+	<servlet>
+		<servlet-name>UserSearchServlet</servlet-name>
+		<servlet-class>co.jp.netwisdom.Servlet.UserSearchServlet</servlet-class>
+	</servlet>
+		  
+	<servlet-mapping>
+		<servlet-name>UserSearchServlet</servlet-name>
+		<url-pattern>/userSearch</url-pattern>
+	</servlet-mapping>
+<!-- 用户查询画面 END-->
+  
+<!-- 用户更改初始化 -->
+	<servlet>
+		<servlet-name>UserUpdateInitServlet</servlet-name>
+		<servlet-class>co.jp.netwisdom.Servlet.UserUpdateInitServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserUpdateInitServlet</servlet-name>
+		<url-pattern>/userUpdateInit</url-pattern>
+	</servlet-mapping>
+<!-- 用户更改初始化END-->
 
-<servlet-mapping>
-	<servlet-name>UserUpdateInitServlet</servlet-name>
-	<url-pattern>/userUpdateInit</url-pattern>
-</servlet-mapping>
-
+<!-- 用户更改画面 -->
+	<servlet>
+		<servlet-name>UserUpdateServlet</servlet-name>
+		<servlet-class>co.jp.netwisdom.Servlet.UserUpdateServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserUpdateServlet</servlet-name>
+		<url-pattern>/updateReg</url-pattern>
+	</servlet-mapping>
+<!-- 用户更改画面END-->
   
   <!--<error-page>
   	<error-code>404</error-code>
