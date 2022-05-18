@@ -9,7 +9,9 @@ public class UserInfoDAO {
 	
 		private JdbcTemplate template = new JdbcTemplate();
 		
+		//执行保存
 		public boolean sava(UserInfo userInfo) {
+
 			int row = 0;
 			String sql = "insert into userInfo(username,password,sex,major,intro) " +
 					"	values(?,?,?,?,?) ";
@@ -25,7 +27,8 @@ public class UserInfoDAO {
 			}
 			return row == 1;
 		}
-
+		
+		//执行伦理删除
 		public boolean upUserInfoFlag(String username) {
 			
 			String sql = "update userInfo set delFlg = '1' where username= ? ";
@@ -41,4 +44,23 @@ public class UserInfoDAO {
 			}
 			return true;
 		}
+		
+		//执行删除
+/*		public boolean delete(String username) {
+			
+			String sql = "DELETE userinfo,hobby"
+						+" FROM userinfo,hobby"
+						+" WHERE ";
+				sql += " userinfo.username = '" + username + "'";
+				sql += " AND hobby.username = '" + username + "'";
+	
+			try {
+				template.updata(sql, username);
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			return true;
+		}	*/
 }

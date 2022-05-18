@@ -21,6 +21,7 @@ public class UserUpdateServlet extends HttpServlet{
 		throws ServletException,IOException {
 		this.doPost(request, response);
 	}
+	
 	public void doPost(HttpServletRequest request,HttpServletResponse response )
 		throws ServletException,IOException{
 		String username = request.getParameter("username");
@@ -34,6 +35,7 @@ public class UserUpdateServlet extends HttpServlet{
 		
 		for(int i = 0; i < hobbyArray.length;i++) {
 			Hobby hobbyObject = new Hobby();
+			hobbyObject.setUsername(username);
 			hobbyObject.setHobby(hobbyArray[i]);
 			hobbyList.add(hobbyObject);
 		}
@@ -56,6 +58,5 @@ public class UserUpdateServlet extends HttpServlet{
 			System.out.println("用户信息 爱好信息更新失败！！");
 			response.sendRedirect("/YGCbook/UserRegFail.jsp");
 		}
-		
 	}	
 }

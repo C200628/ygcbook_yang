@@ -13,6 +13,7 @@ public class UserInfoHobbyDAO {
 	
 	private JdbcTemplate template = new JdbcTemplate();
 
+	//执行查询
 	public  List<UserInfoHobby>  SearchUH(String username,String password,String sex,String major ){
 		String sql = "SELECT uf.username,password,sex,GROUP_CONCAT(hobby)hobby,major,intro "
 					 + "FROM userinfo uf "
@@ -31,9 +32,9 @@ public class UserInfoHobbyDAO {
 				if (!major.equals("")) {
 					sql += "AND major = '"+ major +"'";
 				}
-//				if() {
+
 				sql += " AND uf.delFlg ='0' AND hy.delFlg = '0'";
-//				}
+
 				sql += " GROUP BY uf.username";
 				
 				List<UserInfoHobby> list = new ArrayList<UserInfoHobby>();
@@ -44,15 +45,18 @@ public class UserInfoHobbyDAO {
 				}
 		return list;
 	}
-
-	public  List<UserInfoHobby> upUserIH(String username){
-		String sql = "SELECT uf.username,password,sex,hobby,major,intro "
+	
+	//根据Username执行更新查询
+	public  UserInfoHobby upUserIH(String username){
+		String sql = "SELECT uf.username,password,sex,GROUP_CONCAT(hobby) hobby,major,intro "
 					 + "FROM userinfo uf "
 					 + "LEFT JOIN hobby hy "
 					 + "ON uf.username = hy.username WHERE ";
 				
 				sql += " uf.username = '" + username + "'";
+				
 				sql += " AND uf.delFlg ='0' AND hy.delFlg = '0'";
+				
 				sql += " GROUP BY uf.username";
 				
 				List<UserInfoHobby> list = new ArrayList<UserInfoHobby>();
@@ -61,6 +65,6 @@ public class UserInfoHobbyDAO {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-		return list;
+		return list.get(0);
 	}
 }

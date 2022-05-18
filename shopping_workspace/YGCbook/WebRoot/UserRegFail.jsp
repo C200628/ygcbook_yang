@@ -8,7 +8,7 @@
 	</head>
 	<body>
 			<div align="center">	
-			<h1>用户注册失败！请查找失败原因！！！</h1>
+			<h1>当前操作执行失败！请查找失败原因！！！</h1>
 			</div>
 	</body>
 </html>

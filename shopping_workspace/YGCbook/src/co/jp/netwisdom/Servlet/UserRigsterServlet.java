@@ -27,23 +27,26 @@ public class UserRigsterServlet extends HttpServlet {
 				String password = request.getParameter("password");
 				String sex = request.getParameter("sex");
 				String major = request.getParameter("major");
-				String intro = request.getParameter("intro");
+				String intro = request.getParameter("intro");	
+				//TODO 判断 hobbyArray = null 跳转未实现 
 				String[] hobbyArray = request.getParameterValues("hobby");
-					
-				List hobbyList = new ArrayList();
 				
+				List hobbyList = new ArrayList();
+
 				for(int i = 0; i < hobbyArray.length;i++) {
 					Hobby hobbyObject = new Hobby();
 					hobbyObject.setUsername(username);
 					hobbyObject.setHobby(hobbyArray[i]);
 					hobbyList.add(hobbyObject);
 				}
-				
+			
+					
+			
 				//用户信息导入
 				UserInfoDAO userinfodao = new UserInfoDAO();
 				//爱好信息导入
 				HobbyDAO hobbydao = new HobbyDAO();
-				
+				//判断导入数据是否成功并执行重定向
 				if (userinfodao.sava(new UserInfo(username, password, sex, major, intro)) && hobbydao.sava(hobbyList)){
 					System.out.println("用户信息 爱好信息导入数据库成功！！");
 					request.getRequestDispatcher("/userRegSuccess.jsp").forward(request, response);
@@ -52,5 +55,7 @@ public class UserRigsterServlet extends HttpServlet {
 					System.out.println("用户信息 爱好信息导入数据库失败！！");
 					response.sendRedirect("/YGCbook/UserRegFail.jsp");
 				}
+				
+	
 		}
 }

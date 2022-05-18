@@ -1,10 +1,9 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.security.interfaces.RSAKey"%>
 <%@ page import="java.util.List"%>
-<%@ page import="java.util.Map"%>
-<%@ page import="java.util.HashMap"%>
+<%@ page import="co.jp.netwisdom.dao.UserInfoDAO"%>
 <%@ page import="co.jp.netwisdom.entity.UserInfoHobby" %>
 <% List<UserInfoHobby> datas = (List<UserInfoHobby>)request.getAttribute("data"); %>
+
 
 
 
@@ -15,19 +14,24 @@
 		
 		th{
 			width:100px;
-			background-color:SkyBlue
+			background-color:SkyBlue;
 		}
 		#td1{
-			background-color:red
+			width:100px;
+			background-color:#ccc8aa;
 		}
 		
 		body {
-			text-align:center
+			text-align:center;
 		}
 		table {
 			text-align:center;
-			width:100%
+			width:100%;
 		}
+		
+		
+		
+		
 	</style>
 	</head>
 	
@@ -71,6 +75,7 @@
 				<th>爱好</th>
 				<th>专业</th>
 				<th>简介</th>
+				<th>删除</th>
 			</tr>
 			<% if(datas!= null) {%>
 				<% for( UserInfoHobby uh : datas){%>
@@ -81,6 +86,7 @@
 						<td bgcolor="#88cdaa" ><%=uh.getHobby().replace("0","足球").replace("1","篮球").replace("2","网球")%></td>
 						<td bgcolor="#aaa0dd" ><%=uh.getMajor().replace("0","软件工程").replace("1","英语").replace("2","数学")%></td>
 						<td bgcolor="#ee7f50" ><%=uh.getIntro()%></td>
+						<td id="td1" ><input type="submit" value="删除"></td>
 					</tr>
 				<%}%>
 			<%}%> 

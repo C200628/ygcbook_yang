@@ -634,6 +634,16 @@
 		<url-pattern>/updateReg</url-pattern>
 	</servlet-mapping>
 <!-- 用户更改画面END-->
+  	<servlet>
+		<servlet-name>UserDeleteServlet</servlet-name>
+		<servlet-class>co.jp.netwisdom.Servlet.UserDeleteServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>UserDeleteServlet</servlet-name>
+		<url-pattern>/deldateReg</url-pattern>
+	</servlet-mapping>
+
   
   <!--<error-page>
   	<error-code>404</error-code>
