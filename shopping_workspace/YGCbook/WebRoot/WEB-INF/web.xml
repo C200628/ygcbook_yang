@@ -634,6 +634,8 @@
 		<url-pattern>/updateReg</url-pattern>
 	</servlet-mapping>
 <!-- 用户更改画面END-->
+
+<!-- 用户删除画面 -->
   	<servlet>
 		<servlet-name>UserDeleteServlet</servlet-name>
 		<servlet-class>co.jp.netwisdom.Servlet.UserDeleteServlet</servlet-class>
@@ -643,6 +645,24 @@
 		<servlet-name>UserDeleteServlet</servlet-name>
 		<url-pattern>/deldateReg</url-pattern>
 	</servlet-mapping>
+<!-- 用户删除画面END-->
+
+<!-- 导入struts1  -->
+  	<servlet>
+     	<servlet-name>action</servlet-name>
+     	<!-- 引入Servlet的包所有的路径 -->
+     	<servlet-class>org.apache.struts.action.ActionServlet</servlet-class> <!-- 中央处理Servlet(配合struts-config.xml进行分发) -->
+     	<!-- 初始化配置文件 -->
+     	<init-param>
+       		<param-name>config</param-name>
+       		<param-value>/WEB-INF/struts-config.xml</param-value>
+     	</init-param>
+  	</servlet>
+    <!-- 对外提供服务 -->
+  	<servlet-mapping>
+     	<servlet-name>action</servlet-name>
+     	<url-pattern>*.do</url-pattern>   <!-- 对应所有的请求 -->
+  	</servlet-mapping>
 
   
   <!--<error-page>

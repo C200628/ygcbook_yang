@@ -13,8 +13,7 @@ public class UserInfoDAO {
 		public boolean sava(UserInfo userInfo) {
 
 			int row = 0;
-			String sql = "insert into userInfo(username,password,sex,major,intro) " +
-					"	values(?,?,?,?,?) ";
+			String sql = "insert into userInfo(username,password,sex,major,intro) values(?,?,?,?,?) ";
 			
 			Object[] values = userInfo.getObjArray();
 			
@@ -45,7 +44,7 @@ public class UserInfoDAO {
 			return true;
 		}
 		
-		//执行删除
+		//执行物理删除 涉及更改jdbc底层代码 未实装 
 /*		public boolean delete(String username) {
 			
 			String sql = "DELETE userinfo,hobby"

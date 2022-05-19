@@ -15,10 +15,11 @@
 	</head>
 	
 	<body>
+	<% if(data != null) {%>
 		<form action="updateReg" id="form" method="post" >
 			<br/>
 			<div align="center">
-			<% if(data != null) {%>
+			
 					姓名:<input type="text" readonly name="username" id="username" value="<%=data.getUsername()%>"/>
 					<br/>
 					密码:<input type="password" name="password" id="password" value="<%=data.getPassword()%>"/>
@@ -43,14 +44,14 @@
 					简介:<br/><textarea name="intro" id="intro" ><%=data.getIntro() %></textarea>
 					<br/>
 					
-					<input type="submit"  value="更新用户" onclick="changeActionName('updateReg')" />
-            		<input type="submit"  value="删除用户" onclick="changeActionName('deldateReg')" /> 
+					<input type="submit"  value="更新用户" onclick="changeActionName('updateReg.do')" />
+            		<input type="submit"  value="删除用户" onclick="changeActionName('deldateReg.do')" /> 
 					<input type="reset" value="重置">
 				</div>
 			</form>	
 			
 			<%} else {%>
-			<form action="userRegister" method="post" >
+			<form action="userRegister.do" method="post" >
 				<div align="center">
 					姓名:<input type="text" name="username" id="username"/>
 					<br/>

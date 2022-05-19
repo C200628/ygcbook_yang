@@ -11,8 +11,7 @@ public class HobbyDAO {
 	
 	public boolean sava(List list) {
 		int row = 0;
-		String sql = "insert into hobby(username,hobby) " +
-					 "	values(?,?) ";
+		String sql = "insert into hobby(username,hobby) values(?,?) ";
 	
 		try {
 			for(Object object : list) {

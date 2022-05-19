@@ -28,7 +28,7 @@ public class UserRigsterServlet extends HttpServlet {
 				String sex = request.getParameter("sex");
 				String major = request.getParameter("major");
 				String intro = request.getParameter("intro");	
-				//TODO 判断 hobbyArray = null 跳转未实现 
+				//TODO hobbyArray = null的情况下跳转到注册初始化页面未实现
 				String[] hobbyArray = request.getParameterValues("hobby");
 				
 				List hobbyList = new ArrayList();

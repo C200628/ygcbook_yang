@@ -36,7 +36,7 @@
 	</head>
 	
 	<body>
-		<form action="userSearch" method="post">
+		<form action="userSearch.do" method="post">
 				<br/>
 				<div align="center">
 			
@@ -75,18 +75,18 @@
 				<th>爱好</th>
 				<th>专业</th>
 				<th>简介</th>
-				<th>删除</th>
+				
 			</tr>
 			<% if(datas!= null) {%>
 				<% for( UserInfoHobby uh : datas){%>
 					<tr>
-						<td bgcolor="#eee8aa" ><a href="userUpdateInit?username=<%=uh.getUsername()%>"><%=uh.getUsername()%></a></td>
+						<td bgcolor="#eee8aa" ><a href="userUpdateInit.do?username=<%=uh.getUsername()%>"><%=uh.getUsername()%></a></td>
 						<td bgcolor="#ccc8aa" ><%=uh.getPassword()%></td>
 						<td bgcolor="#ffdab9" ><%=uh.getSex().replace("0","男").replace("1","女")%></td>
 						<td bgcolor="#88cdaa" ><%=uh.getHobby().replace("0","足球").replace("1","篮球").replace("2","网球")%></td>
 						<td bgcolor="#aaa0dd" ><%=uh.getMajor().replace("0","软件工程").replace("1","英语").replace("2","数学")%></td>
 						<td bgcolor="#ee7f50" ><%=uh.getIntro()%></td>
-						<td id="td1" ><input type="submit" value="删除"></td>
+						<!-- <td id="td1" ><input type="submit" value="删除"></td>  未实装 -->
 					</tr>
 				<%}%>
 			<%}%> 
