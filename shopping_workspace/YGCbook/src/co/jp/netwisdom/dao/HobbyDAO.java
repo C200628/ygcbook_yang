@@ -10,15 +10,16 @@ public class HobbyDAO {
 	private JdbcTemplate template = new JdbcTemplate();
 	
 	public boolean sava(List list) {
-		int row = 0;
+		
 		String sql = "insert into hobby(username,hobby) values(?,?) ";
-	
+		int row = 0;
 		try {
 			for(Object object : list) {
-				Hobby hobbyobject = (Hobby)object;
-				Object[] values =  new Object[] {
-						hobbyobject.getUsername(),
-						hobbyobject.getHobby()};
+				Hobby hobbyObj = (Hobby)object;
+				Object[] values = null;
+				values = new Object[] {
+						hobbyObj.getUsername(),
+						hobbyObj.getHobby()};
 				row = template.updata(sql, values);
 			}
 		}catch (SQLException e) {
@@ -26,12 +27,12 @@ public class HobbyDAO {
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return true;
+		return row == 1;
 	}
 	
 	public boolean upHobbyFlag(String username) {
 		
-		String sql = "update hobby set delFlg='1' where username= ? ";
+		String sql = "update hobby set delFlg = '1' where username = ? ";
 				
 		Object[] values = new Object[] {username};
 

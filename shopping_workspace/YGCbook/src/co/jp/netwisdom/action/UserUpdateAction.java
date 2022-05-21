@@ -35,12 +35,11 @@ public class UserUpdateAction  extends Action {
 		String[] hobby = userForm.getHobby();
 
 		List hobbyList = new ArrayList();
-		
 		for(int i = 0; i < hobby.length;i++) {
-			Hobby hobbyObject = new Hobby();
-			hobbyObject.setUsername(username);
-			hobbyObject.setHobby(hobby[i]);
-			hobbyList.add(hobbyObject);
+			Hobby hobbyObj = new Hobby();
+			hobbyObj.setUsername(username);
+			hobbyObj.setHobby(hobby[i]);
+			hobbyList.add(hobbyObj);
 		}
 		
 		HobbyDAO hdao = new HobbyDAO();

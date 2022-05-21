@@ -28,19 +28,18 @@ public class UserRigsterServlet extends HttpServlet {
 				String sex = request.getParameter("sex");
 				String major = request.getParameter("major");
 				String intro = request.getParameter("intro");	
-				//TODO hobbyArray = null的情况下跳转到注册初始化页面未实现
 				String[] hobbyArray = request.getParameterValues("hobby");
 				
 				List hobbyList = new ArrayList();
-
+				if(hobbyArray == null) {
+					hobbyArray = new String[]{""};
+				}
 				for(int i = 0; i < hobbyArray.length;i++) {
 					Hobby hobbyObject = new Hobby();
 					hobbyObject.setUsername(username);
 					hobbyObject.setHobby(hobbyArray[i]);
 					hobbyList.add(hobbyObject);
 				}
-			
-					
 			
 				//用户信息导入
 				UserInfoDAO userinfodao = new UserInfoDAO();

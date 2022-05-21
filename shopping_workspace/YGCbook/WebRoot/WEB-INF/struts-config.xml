@@ -44,7 +44,15 @@
 	   	 			scope="request">
 	   	 			<forward name="userSearch"  path="/userSearch.jsp" />
 	   	 	</action>
+	   	 	<!-- 删除所有 -->
+	   	 	<action path="/delAllUser"
+	   	 			name="userForm"
+	   	 			type="co.jp.netwisdom.action.UserDeleteAllAction"
+	   	 			scope="request">
+	   	 			<forward name="userSearch"  path="/userSearch.jsp" />
+	   	 	</action>
 	     </action-mappings>
+	     <message-resources key ="userResources" parameter="applicationResources"/>
    </struts-config >
 
    

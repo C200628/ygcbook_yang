@@ -4,12 +4,19 @@ import org.apache.struts.action.ActionForm;
 
 public class UserForm extends ActionForm{
 	
+	public String[] getCheck() {
+		return check;
+	}
+	public void setCheck(String[] check) {
+		this.check = check;
+	}
 	private String username;
 	private String password;
 	private String sex;
 	private String major;
 	private String intro;	
 	private String[] hobby;
+	private String[] check;
 	
 	public String getUsername() {
 		return username;

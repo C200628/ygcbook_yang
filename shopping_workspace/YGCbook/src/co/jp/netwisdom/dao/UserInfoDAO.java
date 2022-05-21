@@ -30,7 +30,7 @@ public class UserInfoDAO {
 		//执行伦理删除
 		public boolean upUserInfoFlag(String username) {
 			
-			String sql = "update userInfo set delFlg = '1' where username= ? ";
+			String sql = "update userInfo set delFlg = '1' where username = ? ";
 			
 			Object[] values = new Object[] {username};
 			
