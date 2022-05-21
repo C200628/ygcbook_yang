@@ -51,6 +51,12 @@
 	   	 			scope="request">
 	   	 			<forward name="userSearch"  path="/userSearch.jsp" />
 	   	 	</action>
+	   	 	<!-- checkName -->
+	   	 	<action path="/checkName"
+	   	 			name="userForm"
+	   	 			type="co.jp.netwisdom.action.CheckUserNameAction"
+	   	 			scope="request">
+	   	 	</action>
 	     </action-mappings>
 	     <message-resources key ="userResources" parameter="applicationResources"/>
    </struts-config >

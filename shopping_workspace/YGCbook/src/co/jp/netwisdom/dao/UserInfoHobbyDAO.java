@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.key.dbManager.JdbcTemplate;
-import co.jp.netwisdom.entity.UserInfo;
 import co.jp.netwisdom.entity.UserInfoHobby;
 import co.jp.netwisdom.mapping.UserInfoHobbyMapping;
 

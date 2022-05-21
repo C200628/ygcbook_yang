@@ -12,6 +12,27 @@
 	        document.getElementById("form").action = actionName;
 	        document.getElementById("username").disabled = false;  
 	    }
+	    //alert("数据加载成功");
+		function executeAjax() {
+			   $.ajax({
+			    url : 'checkName.do?username=' + document.getElementById("username").value,
+			    type : 'post', // 数据发送方式
+			    dataType : 'text', // 接受数据格式
+				    error : function(flag) {},
+				    async : true,// 异步加载
+				    success : function(flag) {
+				    	if(flag == 0){
+				    		document.getElementById("flag").innerHTML='';
+				    	}else{
+				    		alert("该用户已被注册！！")
+				    	}
+				    	
+				    }  
+			   });
+		 }
+	</script>
+	<script src="jquery-3.2.1.min.js">
+
 	</script>
 	</head>
 	
@@ -21,7 +42,7 @@
 			<br/>
 			<div align="center">
 					<bean:message bundle="userResources" key="username"/>:
-						<input type="text" readonly name="username" id="username" value="<%=data.getUsername()%>"/>
+						<input type="text" disabled name="username" id="username" value="<%=data.getUsername()%>"/>
 					<br/>
 					<bean:message bundle="userResources" key="password"/>:
 						<input type="password" name="password" id="password" value="<%=data.getPassword()%>"/>
@@ -60,7 +81,8 @@
 			<%} else {%>
 			<form action="userRegister.do" method="post" >
 				<div align="center">
-					<bean:message bundle="userResources" key="username"/>:<input type="text" name="username" id="username"/>
+					<bean:message bundle="userResources" key="username"/>:<input type="text" onblur="executeAjax()" name="username" id="username"value=""/>
+					<font color="red" id="flag"></font>
 					<br/>
 					<bean:message bundle="userResources" key="password"/>:<input type="password" name="password" id="password"/>
 					<br/>
