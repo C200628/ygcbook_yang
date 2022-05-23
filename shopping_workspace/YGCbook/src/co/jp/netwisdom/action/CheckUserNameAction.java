@@ -26,13 +26,13 @@ public class CheckUserNameAction extends Action {
 			
 			List<UserInfo> list = userInfoDAO.checkUserName(username); //获取数据
 
-			PrintWriter pw = response.getWriter();
+			PrintWriter printWriter = response.getWriter();
 			if (list.size() >= 1) {
-				pw.print("1");
+				printWriter.print("1");
 			} else {
-				pw.print("0");
+				printWriter.print("0");
 			}
-			pw.close();
+			printWriter.close();
 		return null;
 	}
 }

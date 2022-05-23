@@ -57,6 +57,12 @@
 	   	 			type="co.jp.netwisdom.action.CheckUserNameAction"
 	   	 			scope="request">
 	   	 	</action>
+	   	 	<!-- checkName -->
+	   	 	<action path="/userNameSearch"
+	   	 			name="userForm"
+	   	 			type="co.jp.netwisdom.action.UserNameSearchAction"
+	   	 			scope="request">
+	   	 	</action>
 	     </action-mappings>
 	     <message-resources key ="userResources" parameter="applicationResources"/>
    </struts-config >

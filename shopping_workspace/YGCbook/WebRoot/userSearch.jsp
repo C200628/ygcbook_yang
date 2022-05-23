@@ -55,8 +55,83 @@
         function delAllAction(actionName) {
         	document.getElementById("form").action = 'delAllUser.do';
 	    }
+        
+		function executeAjax() {
+			   var sex;
+			   if(document.getElementsByName("sex")[0].checked){
+				   sex = 0;
+			   }else{
+				   sex = 1;
+			   }
+			   var major = document.getElementById("major").value; 
+			   $.ajax({
+			    url : 'userNameSearch.do?sex='+ sex +'&major='+ major +'&username='+ document.getElementById("username").value,
+			    type : 'post', // 数据发送方式
+			    dataType : 'json', // 接受数据格式
+				    error : function(users) { },
+				    async : true,// 异步加载
+				    success : function(users) { 
+				    	
+				    	while($("#userTable tr").length>1){
+				    		$("#userTable tr").eq(1).remove();
+				    	}
+				    	
+				    	for(var i = 0;i < users.dates.length; i++){
+				    		username = users.dates[i].username;
+			   				password = users.dates[i].password;
+			   				sex = users.dates[i].sex;
+			   				if(sex == 0){
+			   					sex = "男";
+			   				}else{
+			   					sex = "女";
+			   				}
+			   				hobby = users.dates[i].hobby;
+			   				if(hobby == 0){
+			   					hobby = "足球";
+			   				}else if(hobby == 1){
+			   					hobby = "篮球";
+			   				}else{
+			   					hobby = "网球";
+			   				}
+			   				major = users.dates[i].major;
+			   				if(major == 0){
+			   					major = "软件工程";
+			   				}else if(major == 1){
+			   					major = "英语";
+			   				}else{
+			   					major = "数学";
+			   				}
+			   				intro = users.dates[i].intro;
+			   				
+			   				
+			   					
+			   				
+			   				var UserTb = '<tr>'+
+					   						'<td bgcolor="#C0C0C0" style="width:3px"><input type="checkbox" name="check"></td>'+
+					   						'<td bgcolor="#eee8aa" >'+'<a href="userUpdateInit.do?username='+ username +'">' + username + '</a>'+'</td>'+
+					   						'<td bgcolor="#ccc8aa" >' + password + '</td>'+
+					   						'<td bgcolor="#ffdab9" >' + sex + '</td>'+
+					   						'<td bgcolor="#88cdaa" >' + hobby + '</td>'+
+					   						'<td bgcolor="#aaa0dd" >' + major + '</td>'+
+					   						'<td bgcolor="#ee7f50" >' + intro + '</td>'+
+					   						'<td id="td1"><input type="button" value="更新用户"'+ "onClick=userUpdate('"+ username +"')" + ' /><input type="button" value="删除用户"'+ "onClick=deleteUser('"+ username +"')" + ' /></td>'+		
+					   					 '</tr>';
+			   				$("#userTable").append(UserTb);
+				    	}
+				    	$("#userTable").append('<tr>'+
+				    								'<td bgcolor= "SkyBlue" colspan="8">'+
+				    									'<input type="submit" value="一括删除" onclick="delAllAction()">'+
+				    								'</td>'+
+				    						   '</tr>');
+				    }  
+			   });
+		 }
+        
 	    
 	</script>
+	
+	<script src="jquery-3.2.1.min.js"></script>
+	
 	</head>
 	
 	<body>
@@ -65,16 +140,16 @@
 				<div align="center">
 			
 					<bean:message bundle="userResources" key="username"/>:
-						<input type="text" name="username" id="username" >
+						<input type="text" name="username" id="username" onblur="executeAjax()" />
 						<br/>
 						<br/>
 					<bean:message bundle="userResources" key="sex"/>:
-						<input type="radio" name="sex" id="sex1" value="0"><bean:message bundle="userResources" key="male"/>
-						<input type="radio" name="sex" id="sex2" value="1"><bean:message bundle="userResources" key="female"/>
+						<input type="radio" name="sex" id="sex1" value="0" onblur="executeAjax()"><bean:message bundle="userResources" key="male"/>
+						<input type="radio" name="sex" id="sex2" value="1" onblur="executeAjax()"><bean:message bundle="userResources" key="female"/>
 						<br/>
 						<br/>
 					<bean:message bundle="userResources" key="major"/>:
-						<select name="major" id="major">
+						<select name="major" id="major" onblur="executeAjax()">
 						<option value="">-</option>
 						<option value="0"><bean:message bundle="userResources" key="software"/></option>
 						<option value="1"><bean:message bundle="userResources" key="english"/></option>
@@ -88,7 +163,7 @@
 				<br/>
 				<div align="center"><bean:message bundle="userResources" key="information"/></div>
 				<hr>
-				<table border="1" >
+				<table border="1" id="userTable">
 					<tr>
 						<th style=width:3px><input type="checkbox" id="AllCheckbox" onclick="delAll()"></th>
 						<th><bean:message bundle="userResources" key="username"/></th>

@@ -49,7 +49,7 @@ public class UserInfoDAO {
 			return true;
 		}
 		
-		//
+		//checkName
 		public  List<UserInfo> checkUserName(String username){
 			String sql = "SELECT * FROM userinfo WHERE username= '" + username + "'";
 			
