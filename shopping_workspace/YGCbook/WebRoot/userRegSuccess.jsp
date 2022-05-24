@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>注册成功跳转页面</title>
-	<meta http-equiv="refresh" content="5; url=userSearch.jsp"> <!--5秒后跳转检索界面-->
+	<meta http-equiv="refresh" content="3; url=userSearch.jsp"> <!--3秒后跳转检索界面-->
 	</head>
 		<body>
 			<div align="center">

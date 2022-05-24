@@ -10,9 +10,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import co.jp.netwisdom.dao.UserInfoDAO;
 import co.jp.netwisdom.entity.UserInfo;
 import co.jp.netwisdom.form.UserForm;
+import co.jp.netwisdom.service.CheckUserNameService;
 
 public class CheckUserNameAction extends Action {
 	@Override
@@ -22,10 +22,8 @@ public class CheckUserNameAction extends Action {
 			UserForm userForm = (UserForm)form;
 			String username = userForm.getUsername();
 			
-			UserInfoDAO userInfoDAO = new UserInfoDAO();
+			List <UserInfo> list = new CheckUserNameService().checkUserName(username);
 			
-			List<UserInfo> list = userInfoDAO.checkUserName(username); //获取数据
-
 			PrintWriter printWriter = response.getWriter();
 			if (list.size() >= 1) {
 				printWriter.print("1");

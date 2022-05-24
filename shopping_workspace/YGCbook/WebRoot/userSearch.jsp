@@ -6,8 +6,6 @@
 <% List<UserInfoHobby> data = (List<UserInfoHobby>)request.getAttribute("data"); %>
 
 
-
-
 <html>
 	<head>
 	<title>调取数据库用户信息页面</title>
@@ -54,9 +52,12 @@
 	    	
         function delAllAction(actionName) {
         	document.getElementById("form").action = 'delAllUser.do';
+        	
 	    }
         
+        
 		function executeAjax() {
+			
 			   var sex;
 			   if(document.getElementsByName("sex")[0].checked){
 				   sex = 0;
@@ -65,34 +66,28 @@
 			   }
 			   var major = document.getElementById("major").value; 
 			   $.ajax({
-			    url : 'userNameSearch.do?sex='+ sex +'&major='+ major +'&username='+ document.getElementById("username").value,
-			    type : 'post', // 数据发送方式
-			    dataType : 'json', // 接受数据格式
-				    error : function(users) { },
-				    async : true,// 异步加载
-				    success : function(users) { 
+			    url:'userNameSearch.do?sex='+ sex +'&major='+ major +'&username='+ document.getElementById("username").value,
+			    type:'post', // 数据发送方式
+			    dataType:'json', // 接受数据格式
+				error: function(e) {
+					console.log(e);
+				},
+				async: true,// 异步加载
+				success: function(users) { 
+				    while($("#userTable tr").length>1){
+				    	$("#userTable tr").eq(1).remove();
+				    }
 				    	
-				    	while($("#userTable tr").length>1){
-				    		$("#userTable tr").eq(1).remove();
-				    	}
-				    	
-				    	for(var i = 0;i < users.dates.length; i++){
-				    		username = users.dates[i].username;
-			   				password = users.dates[i].password;
+				    for(var i = 0;i < users.dates.length; i++){
+				    	username = users.dates[i].username;
+			   			password = users.dates[i].password;
 			   				sex = users.dates[i].sex;
 			   				if(sex == 0){
 			   					sex = "男";
 			   				}else{
 			   					sex = "女";
 			   				}
-			   				hobby = users.dates[i].hobby;
-			   				if(hobby == 0){
-			   					hobby = "足球";
-			   				}else if(hobby == 1){
-			   					hobby = "篮球";
-			   				}else{
-			   					hobby = "网球";
-			   				}
+			   				hobby = users.dates[i].hobby.replace("0","足球").replace("1","篮球").replace("2","网球");
 			   				major = users.dates[i].major;
 			   				if(major == 0){
 			   					major = "软件工程";
@@ -102,9 +97,6 @@
 			   					major = "数学";
 			   				}
 			   				intro = users.dates[i].intro;
-			   				
-			   				
-			   					
 			   				
 			   				var UserTb = '<tr>'+
 					   						'<td bgcolor="#C0C0C0" style="width:3px"><input type="checkbox" name="check"></td>'+
@@ -118,16 +110,13 @@
 					   					 '</tr>';
 			   				$("#userTable").append(UserTb);
 				    	}
-				    	$("#userTable").append('<tr>'+
-				    								'<td bgcolor= "SkyBlue" colspan="8">'+
-				    									'<input type="submit" value="一括删除" onclick="delAllAction()">'+
-				    								'</td>'+
-				    						   '</tr>');
+				    	//TODO 一括删除未实装
+				    	$("#userTable").append('<tr><td bgcolor= "SkyBlue" colspan="8"><input type="submit" value="一括删除" onclick="delAllAction()"></td></tr>');
+				    	
 				    }  
 			   });
 		 }
-        
-	    
+        	    
 	</script>
 	
 	<script src="jquery-3.2.1.min.js"></script>

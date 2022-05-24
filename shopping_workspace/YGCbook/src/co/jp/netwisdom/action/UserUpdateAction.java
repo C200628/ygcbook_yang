@@ -1,8 +1,6 @@
 package co.jp.netwisdom.action;
 
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,11 +10,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import co.jp.netwisdom.dao.HobbyDAO;
-import co.jp.netwisdom.dao.UserInfoDAO;
-import co.jp.netwisdom.entity.Hobby;
-import co.jp.netwisdom.entity.UserInfo;
+import co.jp.netwisdom.Dto.UserUpdateDto;
 import co.jp.netwisdom.form.UserForm;
+import co.jp.netwisdom.service.UserUpdateService;
 
 
 
@@ -26,40 +22,23 @@ public class UserUpdateAction  extends Action {
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
 		
 		UserForm userForm = (UserForm)form;
-		
-		String username = userForm.getUsername();
-		String password = userForm.getPassword();
-		String sex = userForm.getSex();
-		String major = userForm.getMajor();
-		String intro = userForm.getIntro();	 
-		String[] hobby = userForm.getHobby();
 
-		List hobbyList = new ArrayList();
-		for(int i = 0; i < hobby.length;i++) {
-			Hobby hobbyObj = new Hobby();
-			hobbyObj.setUsername(username);
-			hobbyObj.setHobby(hobby[i]);
-			hobbyList.add(hobbyObj);
-		}
+		UserUpdateDto dto = new UserUpdateDto();
 		
-		HobbyDAO hdao = new HobbyDAO();
-		UserInfoDAO udao = new UserInfoDAO();
+		dto.setUsername(userForm.getUsername());
+		dto.setPassword(userForm.getPassword());
+		dto.setSex(userForm.getSex());
+		dto.setMajor(userForm.getMajor());
+		dto.setIntro(userForm.getIntro());	
+		dto.setHobby(userForm.getHobby());
+		dto.setHobby(userForm.getHobby());
 		
-		boolean upUserInfoFlag = true;
-		upUserInfoFlag = udao.upUserInfoFlag(username);
-		upUserInfoFlag = udao.sava(new UserInfo(username,password,sex,major,intro));
-		
-		boolean upHobbyFlag = true;
-		upHobbyFlag = hdao.upHobbyFlag(username);
-		upHobbyFlag = hdao.sava(hobbyList);
-		
-		if(upUserInfoFlag && upHobbyFlag) {
-			System.out.println("用户信息 爱好信息更新成功！！");
-			return mapping.findForward("Success");
-		}else {
-			System.out.println("用户信息 爱好信息更新失败！！");
-			return mapping.findForward("Error");
-		}
+		//重复上述set对象 get对象的操作 未实装
+		//dto = (UserRigisterDto)BeanPropertiesCopy.copy(userForm, dto);
+		new UserUpdateService().userUpdate(dto);
+	
+		return mapping.findForward("Success");
+	
 		
 	}	
 }

@@ -10,11 +10,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import co.jp.netwisdom.dao.UserInfoDAO;
-import co.jp.netwisdom.dao.UserInfoHobbyDAO;
-import co.jp.netwisdom.entity.UserInfo;
 import co.jp.netwisdom.entity.UserInfoHobby;
 import co.jp.netwisdom.form.UserForm;
+import co.jp.netwisdom.service.UserNameSearchService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -29,11 +27,8 @@ public class UserNameSearchAction extends Action {
 			String sex = userForm.getSex();
 			String major = userForm.getMajor();
 			
-		
-			UserInfoHobbyDAO dao = new UserInfoHobbyDAO(); 
-			List<UserInfoHobby> list = dao.SearchUser(username, password, sex, major);
-	
-			request.setAttribute("data", list);
+			List<UserInfoHobby> list = new UserNameSearchService().userNameSearch(username, password, sex, major); 
+			
 			response.setContentType("text/html;charset=UTF-8");
 			
 			PrintWriter printWriter = response.getWriter();
@@ -41,12 +36,6 @@ public class UserNameSearchAction extends Action {
 			JSONObject jo = new JSONObject();
 			jo.put("dates", json);
 			printWriter.print(jo);
-
-//			if (list.size() >= 1) {
-//				printWriter.print("1");
-//			} else {
-//				printWriter.print("0");
-//			}
 			printWriter.close();
 		
 		return null;

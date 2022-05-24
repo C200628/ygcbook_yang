@@ -4,7 +4,7 @@
 	<head>
 	<meta charset="UTF-8">
 	<title>用户信息注册失败页面</title>
-	<meta http-equiv="refresh" content="5; url=userReg.jsp"> <!--5秒后跳转回用户注册界面-->
+	<meta http-equiv="refresh" content="3; url=userReg.jsp"> <!--3秒后跳转回用户注册界面-->
 	</head>
 	<body>
 			<div align="center">	

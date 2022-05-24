@@ -8,9 +8,8 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import co.jp.netwisdom.dao.HobbyDAO;
-import co.jp.netwisdom.dao.UserInfoDAO;
 import co.jp.netwisdom.form.UserForm;
+import co.jp.netwisdom.service.UserDeleteAllService;
 
 
 public class UserDeleteAllAction extends Action {
@@ -22,20 +21,8 @@ public class UserDeleteAllAction extends Action {
 		
 		String[] usernames = userForm.getCheck();
 		
-		HobbyDAO hdao = new HobbyDAO();
-		UserInfoDAO udao = new UserInfoDAO();
+		new UserDeleteAllService().userDeleteAll(usernames);
 		
-		for(String username:usernames) {
-			boolean upUserInfoFlag = true;
-			upUserInfoFlag = udao.upUserInfoFlag(username);
-			
-			boolean upHobbyFlag = true;
-			upHobbyFlag = hdao.upHobbyFlag(username);
-	
-			if(upUserInfoFlag && upHobbyFlag) {
-				System.out.println("用户信息 爱好信息删除成功！！");
-			}
-		}
 		return mapping.findForward("userSearch");
 	}	
 }

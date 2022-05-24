@@ -1,16 +1,13 @@
-package co.jp.netwisdom.form;
+package co.jp.netwisdom.Dto;
 
-import org.apache.struts.action.ActionForm;
-
-public class UserForm extends ActionForm{
-	
+public class UserRigisterDto {
 	private String username;
 	private String password;
 	private String sex;
 	private String major;
 	private String intro;	
 	private String[] hobby;
-	private String[] check;
+
 	
 	public String getUsername() {
 		return username;
@@ -27,6 +24,13 @@ public class UserForm extends ActionForm{
 	public String getIntro() {
 		return intro;
 	}
+	public String[] getHobby() {
+		return hobby;
+	}
+	
+	public void setHobby(String[] hobby) {
+		this.hobby = hobby;
+	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -42,17 +46,5 @@ public class UserForm extends ActionForm{
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-	public String[] getHobby() {
-		return hobby;
-	}
-	public void setHobby(String[] hobby) {
-		this.hobby = hobby;
-	}
-	public String[] getCheck() {
-		return check;
-	}
-	public void setCheck(String[] check) {
-		this.check = check;
-	}
-
+	
 }
