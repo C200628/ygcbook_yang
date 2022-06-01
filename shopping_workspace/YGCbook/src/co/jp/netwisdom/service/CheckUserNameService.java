@@ -1,18 +1,19 @@
 package co.jp.netwisdom.service;
 
 
-import java.util.List;
-
-
-import co.jp.netwisdom.dao.UserInfoDAO;
+import co.jp.netwisdom.Utils.MyBatisUtil;
 import co.jp.netwisdom.entity.UserInfo;
-
+import co.jp.netwisdom.mapper.UserInfoMapper;
 
 public class CheckUserNameService {
-	public List<UserInfo> checkUserName(String username) {
+	public UserInfo checkUserName(String username) {
+
+		// 获取mapper
+		UserInfoMapper userInfoMapper = MyBatisUtil.getMapper(UserInfoMapper.class);
 		
-			UserInfoDAO userInfoDAO = new UserInfoDAO();
-			return userInfoDAO.checkUserName(username); 
-			
+		//执行Ajax检查username的sql操作
+		UserInfo userInfo = userInfoMapper.checkUserName(username); 
+		
+		return userInfo;
 	}
 }

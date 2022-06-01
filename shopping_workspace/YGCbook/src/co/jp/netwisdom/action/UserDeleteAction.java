@@ -2,17 +2,18 @@ package co.jp.netwisdom.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
 import co.jp.netwisdom.form.UserForm;
 import co.jp.netwisdom.service.UserDeleteService;
 
 
 public class UserDeleteAction extends Action {
+	
+	private UserDeleteService userDeleteService = new UserDeleteService();
+	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
@@ -20,7 +21,7 @@ public class UserDeleteAction extends Action {
 		
 		String username = userForm.getUsername();
 		
-		new UserDeleteService().userDelete(username);
+		userDeleteService.userDelete(username);
 
 		return mapping.findForward("userSearch");
 	}	

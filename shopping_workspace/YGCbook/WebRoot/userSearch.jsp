@@ -1,7 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ page import="java.util.List"%>
-<%@ page import="co.jp.netwisdom.dao.UserInfoDAO"%>
 <%@ page import="co.jp.netwisdom.entity.UserInfoHobby" %>
 <% List<UserInfoHobby> data = (List<UserInfoHobby>)request.getAttribute("data"); %>
 
@@ -78,17 +77,17 @@
 				    	$("#userTable tr").eq(1).remove();
 				    }
 				    	
-				    for(var i = 0;i < users.dates.length; i++){
-				    	username = users.dates[i].username;
-			   			password = users.dates[i].password;
-			   				sex = users.dates[i].sex;
+				    for(var i = 0;i < users.datas.length; i++){
+				    	username = users.datas[i].username;
+			   			password = users.datas[i].password;
+			   				sex = users.datas[i].sex;
 			   				if(sex == 0){
 			   					sex = "男";
 			   				}else{
 			   					sex = "女";
 			   				}
-			   				hobby = users.dates[i].hobby.replace("0","足球").replace("1","篮球").replace("2","网球");
-			   				major = users.dates[i].major;
+			   				hobby = users.datas[i].hobby.replace("0","足球").replace("1","篮球").replace("2","网球");
+			   				major = users.datas[i].major;
 			   				if(major == 0){
 			   					major = "软件工程";
 			   				}else if(major == 1){
@@ -96,10 +95,10 @@
 			   				}else{
 			   					major = "数学";
 			   				}
-			   				intro = users.dates[i].intro;
+			   				intro = users.datas[i].intro;
 			   				
 			   				var UserTb = '<tr>'+
-					   						'<td bgcolor="#C0C0C0" style="width:3px"><input type="checkbox" name="check"></td>'+
+					   						'<td bgcolor="#C0C0C0" style="width:3px"><input type="checkbox" name="check" value="' + username + '"></td>'+
 					   						'<td bgcolor="#eee8aa" >'+'<a href="userUpdateInit.do?username='+ username +'">' + username + '</a>'+'</td>'+
 					   						'<td bgcolor="#ccc8aa" >' + password + '</td>'+
 					   						'<td bgcolor="#ffdab9" >' + sex + '</td>'+
@@ -110,9 +109,7 @@
 					   					 '</tr>';
 			   				$("#userTable").append(UserTb);
 				    	}
-				    	//TODO 一括删除未实装
 				    	$("#userTable").append('<tr><td bgcolor= "SkyBlue" colspan="8"><input type="submit" value="一括删除" onclick="delAllAction()"></td></tr>');
-				    	
 				    }  
 			   });
 		 }

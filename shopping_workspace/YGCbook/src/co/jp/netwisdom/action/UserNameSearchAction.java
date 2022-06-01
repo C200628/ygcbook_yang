@@ -17,6 +17,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 public class UserNameSearchAction extends Action {
+	
+	private UserNameSearchService userNameSearchService = new UserNameSearchService();
+	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
@@ -27,14 +30,14 @@ public class UserNameSearchAction extends Action {
 			String sex = userForm.getSex();
 			String major = userForm.getMajor();
 			
-			List<UserInfoHobby> list = new UserNameSearchService().userNameSearch(username, password, sex, major); 
+			List<UserInfoHobby> list = userNameSearchService.userNameSearch(username, password, sex, major); 
 			
 			response.setContentType("text/html;charset=UTF-8");
 			
 			PrintWriter printWriter = response.getWriter();
 			JSONArray json = JSONArray.fromObject(list); //把列表的数据装换为json格式
 			JSONObject jo = new JSONObject();
-			jo.put("dates", json);
+			jo.put("datas", json);
 			printWriter.print(jo);
 			printWriter.close();
 		

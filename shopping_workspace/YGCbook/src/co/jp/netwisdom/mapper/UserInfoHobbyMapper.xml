@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <!DOCTYPE mapper PUBLIC 
+   "-//mybatis.org//DTO Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.jp.netwisdom.mapper.UserInfoHobbyMapper">
+	<select id="SearchUH" resultType="co.jp.netwisdom.entity.UserInfoHobby">
+		SELECT
+			uf.username,
+			password,
+			sex,
+			GROUP_CONCAT(hobby) hobby,
+			major,intro
+		FROM
+			userinfo uf
+		LEFT JOIN 
+			hobby hy
+		ON 
+			uf.username = hy.username
+		WHERE
+			1=1
+		<if test='username !=""'>AND uf.username = #{username}</if>
+		<if test='password != null'>AND password = #{password}</if>
+		<if test='sex != null'>AND sex = #{sex}</if>
+		<if test='major !=""'>AND major = #{major}</if>
+		AND
+			uf.delFlg ='0'
+		AND
+			hy.delFlg ='0'
+		GROUP BY 
+			uf.username
+
+	</select>
+
+	<select id="upUserIH" resultType="co.jp.netwisdom.entity.UserInfoHobby">
+		SELECT
+			uf.username,
+			password,
+			sex,
+			GROUP_CONCAT(hobby) hobby,
+			major,intro
+		FROM
+			userinfo uf
+		LEFT JOIN 
+			hobby hy
+		ON 
+			uf.username = hy.username
+		WHERE
+			uf.username = #{username}
+		AND
+			uf.delFlg ='0'
+		AND
+			hy.delFlg ='0'
+		GROUP BY 
+			uf.username
+	</select>
+
+	<select id="SearchUser" resultType="co.jp.netwisdom.entity.UserInfoHobby">
+		SELECT
+			uf.username,
+			password,
+			sex,
+			GROUP_CONCAT(hobby) hobby,
+			major,
+			intro
+		FROM
+			userinfo uf
+		LEFT JOIN
+			hobby hy
+		ON 
+			uf.username = hy.username
+		WHERE
+			1=1
+		<if test='username != null and username != ""'>AND uf.username = #{username}</if>
+		<if test='password != null and password != ""'>AND password = #{password}</if>
+		<if test='sex != null and sex != ""'>AND sex = #{sex}</if>
+		<if test='major != null and major !=""'>AND major = #{major}</if>
+		AND
+			uf.delFlg ='0'
+		AND
+			hy.delFlg ='0'
+		GROUP BY 
+			uf.username
+	</select>
+
+</mapper>

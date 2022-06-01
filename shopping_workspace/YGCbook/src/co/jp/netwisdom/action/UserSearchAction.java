@@ -14,20 +14,22 @@ import co.jp.netwisdom.form.UserForm;
 import co.jp.netwisdom.service.UserSearchService;
 
 public class UserSearchAction extends Action {
+	 private UserSearchService userSearchService = new UserSearchService();
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request, HttpServletResponse response)
-			throws Exception{
-			
-			UserForm userForm = (UserForm)form;
-			
-			String username = userForm.getUsername();
-			String password = userForm.getPassword();
-			String sex = userForm.getSex();
-			String major = userForm.getMajor();
-			List<UserInfoHobby> list = new UserSearchService().userSearch(username, password, sex, major);
-		
-			request.setAttribute("data", list);
-			return mapping.findForward("userSearch");
-		
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		UserForm userForm = (UserForm) form;
+
+		String username = userForm.getUsername();
+		String password = userForm.getPassword();
+		String sex = userForm.getSex();
+		String major = userForm.getMajor();
+
+		List<UserInfoHobby> list = userSearchService.userSearch(username, password, sex, major);
+
+		request.setAttribute("data", list);
+		return mapping.findForward("userSearch");
+
 	}
 }
