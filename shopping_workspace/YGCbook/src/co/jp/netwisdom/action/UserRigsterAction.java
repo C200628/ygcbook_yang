@@ -6,13 +6,18 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import co.jp.netwisdom.Dto.UserRigisterDto;
 import co.jp.netwisdom.form.UserForm;
 import co.jp.netwisdom.service.UserRigsterService;
 
+@Controller(value = "/userRegister")
 public class UserRigsterAction extends Action {
 
-	private UserRigsterService userRigsterService = new UserRigsterService();
+	@Autowired
+	private UserRigsterService userRigsterService;
 
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,

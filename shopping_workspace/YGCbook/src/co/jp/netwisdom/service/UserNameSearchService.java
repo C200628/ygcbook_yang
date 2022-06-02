@@ -1,12 +1,16 @@
 package co.jp.netwisdom.service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
+import co.jp.netwisdom.Interface.UserNameSearchServiceInterface;
 import co.jp.netwisdom.Utils.MyBatisUtil;
 import co.jp.netwisdom.entity.UserInfoHobby;
 import co.jp.netwisdom.mapper.UserInfoHobbyMapper;
 
-public class UserNameSearchService {
+@Service
+public class UserNameSearchService implements UserNameSearchServiceInterface {
 
+	@Override
 	public List<UserInfoHobby> userNameSearch(String username, String password, String sex, String major) {
 
 		// 获取mapper

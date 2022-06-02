@@ -6,23 +6,26 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import co.jp.netwisdom.Interface.UserDeleteServiceInterface;
 import co.jp.netwisdom.form.UserForm;
-import co.jp.netwisdom.service.UserDeleteService;
 
-
+@Controller(value = "/deldateReg")
 public class UserDeleteAction extends Action {
-	
-	private UserDeleteService userDeleteService = new UserDeleteService();
-	
+
+	@Autowired
+	private UserDeleteServiceInterface userDeleteService;
+
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		UserForm userForm = (UserForm)form;
-		
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		UserForm userForm = (UserForm) form;
+
 		String username = userForm.getUsername();
-		
+
 		userDeleteService.userDelete(username);
 
 		return mapping.findForward("userSearch");
-	}	
+	}
 }

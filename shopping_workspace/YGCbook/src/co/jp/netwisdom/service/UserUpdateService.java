@@ -2,15 +2,21 @@ package co.jp.netwisdom.service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import co.jp.netwisdom.Dto.UserUpdateDto;
+import co.jp.netwisdom.Interface.UserUpdateServiceInterface;
 import co.jp.netwisdom.Utils.MyBatisUtil;
 import co.jp.netwisdom.entity.Hobby;
 import co.jp.netwisdom.entity.UserInfo;
 import co.jp.netwisdom.mapper.HobbyMapper;
 import co.jp.netwisdom.mapper.UserInfoMapper;
 
-public class UserUpdateService {
-
+@Service
+public class UserUpdateService implements UserUpdateServiceInterface{
+	
+	@Override
 	public void userUpdate(UserUpdateDto dto) {
 
 		String[] hobbys = dto.getHobby();

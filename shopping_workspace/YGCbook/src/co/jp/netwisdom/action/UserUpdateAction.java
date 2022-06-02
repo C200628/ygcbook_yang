@@ -6,13 +6,18 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import co.jp.netwisdom.Dto.UserUpdateDto;
-import co.jp.netwisdom.form.UserForm;
-import co.jp.netwisdom.service.UserUpdateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
+import co.jp.netwisdom.Dto.UserUpdateDto;
+import co.jp.netwisdom.Interface.UserUpdateServiceInterface;
+import co.jp.netwisdom.form.UserForm;
+
+@Controller(value = "/updateReg")
 public class UserUpdateAction  extends Action {
 	
-	private UserUpdateService userUpdateService = new UserUpdateService();
+	@Autowired
+	private UserUpdateServiceInterface userUpdateService;
 	
 	@Override
 	public ActionForward execute(ActionMapping mapping, ActionForm form,

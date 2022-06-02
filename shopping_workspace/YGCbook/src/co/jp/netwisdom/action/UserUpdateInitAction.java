@@ -6,26 +6,29 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import co.jp.netwisdom.Interface.UserUpdateInitServiceInterface;
 import co.jp.netwisdom.entity.UserInfoHobby;
 import co.jp.netwisdom.form.UserForm;
-import co.jp.netwisdom.service.UserUpdateInitService;
 
-
+@Controller(value = "/userUpdateInit")
 public class UserUpdateInitAction extends Action {
-	
-	private UserUpdateInitService userUpdateInitService = new UserUpdateInitService();
-	
+
+	@Autowired
+	private UserUpdateInitServiceInterface userUpdateInitService;
+
 	@Override
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		
-		UserForm userForm = (UserForm)form;
-		
+	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		UserForm userForm = (UserForm) form;
+
 		String username = userForm.getUsername();
-		
+
 		UserInfoHobby list = userUpdateInitService.userUpdateInit(username);
-		
+
 		request.setAttribute("data", list);
 		return mapping.findForward("userReg");
-	}	
+	}
 }
